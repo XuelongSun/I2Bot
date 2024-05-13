@@ -19,15 +19,15 @@ Files are constructed as a Webots project
 |   |-- I2Bot  # main controller for robot
 |   |   |-- I2Bot.py
 |   |   |-- constant.py
-|   |   |-- data
-|   |   |-- navigation.py
+|   |   |-- data # directory to store simulation data
+|   |   |-- navigation.py # models for navigation
 |   |   |-- robots.py
-|   |   |-- urdf
+|   |   |-- urdf # URDF file of the robot legs
 |   |   |   |-- front_leg.urdf
 |   |   |   |-- hind_leg.urdf
 |   |   |   |-- middle_leg.urdf
 |   |   |-- utils.py
-|   |   |-- walker.py
+|   |   |-- walker.py # FK and IK gait control
 |   |-- odor_plume_supervisor # controller for simulating odor plume
 |   |   |-- odor_plume_supervisor.py
 |   |   |-- pompy
