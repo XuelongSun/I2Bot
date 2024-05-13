@@ -1,0 +1,92 @@
+<?xml version="1.0"?> 
+ <robot name="AntFrontLeg"> 
+     <link name="base_link"> 
+         <!-- <visual> 
+             <geometry> 
+                 <sphere radius="0.5"/> 
+             </geometry> 
+             <origin rpy="0 0 0" xyz="0 0 0.5"/> 
+         </visual>  -->
+     </link>
+
+	 <link name="coxa"> 
+         <visual> 
+             <geometry> 
+                 <!-- <cylinder radius="10.9" height="30.8"/>  -->
+                 <box size="0.308 0.109 0.109"/> 
+             </geometry> 
+             <origin rpy="0 0 0" xyz="0.1504 0 0.0"/> 
+         </visual> 
+     </link>
+	 <joint name="body_coxa" type="revolute">
+		 <limit lower="-1.9" upper="1.9"/>
+		 <parent link="base_link"/>
+		 <child link="coxa"/>
+		 <axis xyz="0 0 1"/>
+		 <origin rpy="0 0 0" xyz="0 0 0"/>
+	 </joint>
+
+	 <link name="femur"> 
+         <visual> 
+             <geometry> 
+                 <box size="2.462 0.146 0.146"/> 
+             </geometry> 
+             <origin rpy="0 0 0" xyz="1.231 0 0.0"/> 
+         </visual> 
+     </link>
+	 <joint name="coxa_femur" type="revolute">
+		 <limit lower="-1.9" upper="1.9"/>
+		 <parent link="coxa"/>
+		 <child link="femur"/>
+		 <axis xyz="0 1 0"/>
+		 <origin rpy="0 0 0" xyz="0.308 0 0"/>
+	 </joint>
+
+	 <link name="tibia"> 
+         <visual> 
+             <geometry> 
+                 <box size="2.148 0.109 0.109"/> 
+             </geometry> 
+             <origin rpy="0 0 0" xyz="1.074 0 0.0"/> 
+         </visual> 
+     </link>
+	 <joint name="femur_tibia" type="revolute">
+		 <limit lower="-1.9" upper="1.9"/>
+		 <parent link="femur"/>
+		 <child link="tibia"/>
+		 <axis xyz="0 1 0"/>
+		 <origin rpy="0 0 0" xyz="2.462 0 0"/>
+	 </joint>
+
+	 <link name="tarsus"> 
+         <visual> 
+             <geometry> 
+                 <box size="2.0468 0.0584 0.0584"/> 
+             </geometry> 
+             <origin rpy="0 0 0" xyz="1.024 0 0.0"/> 
+         </visual> 
+     </link>
+	 <joint name="tibia_tarsus" type="revolute">
+		 <limit lower="-1.9" upper="1.9"/>
+		 <parent link="tibia"/>
+		 <child link="tarsus"/>
+		 <axis xyz="0 1 0"/>
+		 <origin rpy="0 0 0" xyz="2.148 0 0"/>
+	 </joint>
+
+	 <link name="claw">
+		<visual>
+          <origin xyz="0.005 0 0" rpy="0 0 0" />
+          	<geometry>
+            	<sphere radius="0.095" />
+			</geometry>
+		</visual>	
+	</link>
+	<joint name="end_joint" type="revolute">
+        <parent link="tarsus"/>
+        <child link="claw"/>
+        <axis xyz="1 0 0"/>
+        <origin xyz="2.048 0 0" rpy="0 0 0"/>
+        <limit lower="-1.92" upper="1.92" />
+    </joint>
+ </robot>

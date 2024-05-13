@@ -7,6 +7,8 @@
 
   <img src="https://img.shields.io/badge/Webots-Build-red">
 
+  <a><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+
   <i> <font size="4"> I2Bot: A open-source tool for simulating multi-modal and embodied insect navigation</font> </i>
 </div>
 
@@ -54,6 +56,7 @@ Files are constructed as a Webots project
 |   |   |-- trial_narrow.png
 |   |   |-- trial_normal.png
 |   |   |-- trial_wide.png
+|-- media # files for README.md
 ```
 ### Morphology
 The morphology and the positions of each organs and limbs are reconstructed by the measurements of real desert ant *Cataglyphis fortis* by Wehner.
