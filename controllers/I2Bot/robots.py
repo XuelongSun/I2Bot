@@ -605,6 +605,7 @@ class NavigationController(AntBase):
             o_l, w_l, o_r, w_r = self.get_odor_plume()
             no_odor = True
             d = 0
+            dir_ = 0
             print(f'left: odor {o_l}, wind {w_l}', f"right: odor {o_r}, wind {w_r}")
             if o_l is not None:
                 if o_l > 1e-6 or o_r > 1e-6:
@@ -613,22 +614,17 @@ class NavigationController(AntBase):
                     if o_l > o_r:
                         # turn upwind defined by the wind direction at left antenna
                         dir_ = np.arctan2(w_l[1], w_l[0])
-                        h = self.get_self_rotation()[-1]
-                        d = (np.rad2deg(dir_) - np.rad2deg(h)) / 13
-                        # d = ((dir_ - h + np.pi) % np.pi*2 - np.pi) / np.deg2rad(13)
-                        print('dir', np.rad2deg(dir_), 'h', np.rad2deg(h), 'd', d)
-                        # d = 2
                     else:
-                        # turn right
-                        dir_ = np.arctan2(w_r[1], w_r[0])
-                        h = self.get_self_rotation()[-1]
-                        # d = ((dir_ - h + np.pi) % np.pi*2 - np.pi) / np.deg2rad(13)
-                        d = (np.rad2deg(dir_) - np.rad2deg(h)) / 13
-                        print('dir', np.rad2deg(dir_), 'h', np.rad2deg(h), 'd', d)
-                        # d = -2
-                    
-                    # use average wind direction to turn
-            
+                        # turn upwind defined by the wind direction at right antenna
+                        dir_ = np.arctan2(w_r[1], w_r[0]) 
+    
+                    h = self.get_self_rotation()[-1] + np.pi * (self.get_self_rotation()[-2]<0)
+                    h = pi2pi(h)
+                    dir_ = pi2pi(dir_)
+                    # d = pi2pi(dir_ - h) / np.deg2rad(13)
+                    d = pi2pi(dir_ - h)
+                    print('dir', np.rad2deg(dir_), 'h', np.rad2deg(h), 'd', np.rad2deg(d))
+                    # TODO:use average wind direction to turn
             
             if no_odor:
                 o_l = 0
@@ -646,16 +642,19 @@ class NavigationController(AntBase):
                 # else:
                 #     d = np.max([d, -6])
                 # rotate
-                self.walker.parameters['HipSwing'] = np.deg2rad(5)
+                sw = np.min([5 + abs(np.rad2deg(d)//5), 15])
+                self.walker.parameters['HipSwing'] = np.deg2rad(sw)
+                # self.walker.parameters['HipSwing'] = np.deg2rad(int(np.abs(dir)))
                 self.walker.parameters['Rotation'] = int(np.sign(d))
+                # self.walker.parameters['Rotation'] = int(-dir)
                 self.walker.generate_sequence()
-                # self.walk(int(abs(d)))
-                n = int(abs(d))
+                self.walk(1)
+                # n = int(abs(d))
                 # go forward
-                self.walker.parameters['HipSwing'] = np.deg2rad(20)
+                self.walker.parameters['HipSwing'] = np.deg2rad(15)
                 self.walker.parameters['Rotation'] = 0
                 self.walker.generate_sequence()
-                self.walk(2)
+                # self.walk(2)
                 n = 2
             
             for _ in range(self.walker.sequence_len*n):
@@ -672,7 +671,7 @@ class NavigationController(AntBase):
                 self.logger.data['velocity'].append(self.get_self_velocity())
                 self.logger.data['angular_velocity'].append(self.get_self_angular_velocity())
             
-            if self.get_self_position()[0] < -3.2:
+            if self.get_self_position()[0] < -2.8:
                 self.logger.log('Odor plume tracking finished at t={}.'.format(self.timer))
                 print('Odor plume tracking finished at t={}.'.format(self.timer))
                 break

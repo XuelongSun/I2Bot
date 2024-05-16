@@ -104,7 +104,7 @@ As the ant robot always headed to the red ball in the artificial visual sceene.
 
 + Odor plume
   Plume tracking of walking insect in turbulent odor environment:
-  ![](media/odor_plume_tracking.gif)
+  ![](media/odor_plume_tracking_new.gif)
 
 
 ### How to run the demos
