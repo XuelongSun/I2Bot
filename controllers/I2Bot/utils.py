@@ -5,10 +5,39 @@ import matplotlib.pyplot as plt
 import numpy as np
 from constant import *
 from math import factorial
+import scipy.io as sio
 
+def calculate_speed(velocity):
+    return np.sqrt(velocity[:,0]**2 + velocity[:,1]**2)
+
+def calculate_velocity(data, end_time=480):
+    velocity = []
+    interval = 80
+    t = np.array(data['time'])[:end_time]
+    p = np.array(data['position'])[:end_time]
+    for i in range(1, len(t)//interval):
+        dt = t[i*interval] - t[(i-1)*interval]
+        dx = p[i*interval][0] - p[(i-1)*interval][0]
+        dy = p[i*interval][1] - p[(i-1)*interval][1]
+        # dz = data['position'][i+interval][2] - data['position'][i][2]
+        velocity.append([dx/dt, dy/dt])
+    return t[::interval][:len(velocity)], velocity
 
 def pi2pi(direction):
     return (direction + np.pi) % (2 * np.pi) - np.pi
+
+
+def visual_world_mat2obj(mat_filename, obj_filename):
+    w = sio.loadmat(mat_filename)
+    with open(obj_filename, 'w') as f:
+        for i in range(w['X'].shape[0]):
+            for j in range(3):
+                f.write(f"v {w['X'][i, j]} {w['Y'][i, j]} {w['Z'][i, j]}\n")
+            # f.write(f"v {w1['X'][i, 0]} {w1['Y'][i, 0]} {w1['Z'][i, 0]}\n")
+        for i in range(w['X'].shape[0]):
+            s = i * 3
+            f.write(f"f {s+1} {s+2} {s+3}\n")
+
 
 class Logger:
     def __init__(self, path, name):

@@ -128,3 +128,27 @@ and then press the `run` button to run the simulation.
   When using the `odor_trail_following.wbt` world file. you man need to change the `texture` of the `arena` node to change the width of the odor trail.
 + odor plume tracking
   When using the `odor_plume_tracking.wbt` world file, you may need also modify the `controller` of the olfactory node to change the dynamics of the odor simulation. 
+
+### Customize the 3D world
+Since Webots supports importing 3D object (a geometry and appearance from a `.dae` or `.obj` file) via the `CadShape` node or `Shape->Geometry->Mesh` node, it is easy to modify the 3D world. 
+
+Previous visual navigation studies apply simulated 3D world defined by a `.mat` file, one can transfer this to a `.obj` file by codes like:
+```python
+def visual_world_mat2obj(mat_filename, obj_filename):
+    w = sio.loadmat(mat_filename)
+    with open(obj_filename, 'w') as f:
+        for i in range(w['X'].shape[0]):
+            for j in range(3):
+                f.write(f"v {w['X'][i, j]} {w['Y'][i, j]} {w['Z'][i, j]}\n")
+            # f.write(f"v {w1['X'][i, 0]} {w1['Y'][i, 0]} {w1['Z'][i, 0]}\n")
+        for i in range(w['X'].shape[0]):
+            s = i * 3
+            f.write(f"f {s+1} {s+2} {s+3}\n")
+
+visual_world_mat2obj('world.mat', 'world.obj')
+```
+then import to Webots (add the file name in the `url` field of node `Shape->Geometry->Mesh`) and set the appreance as you like:
+![](media/WorldCustomize.png)
+
+
+
