@@ -3,13 +3,12 @@
 <div align='center'>
   <img src="media/I2BotLogo.png" width=500>
   <div></div>
-  <img src="https://img.shields.io/badge/Python-3.9.10-%233776AB?logo=Python">
+  <!-- <img src="https://img.shields.io/badge/Python-3.9.10-%233776AB?logo=Python"> -->
 
   <img src="https://img.shields.io/badge/Webots-Build-red">
-
   <a><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
 
-  <i> <font size="4"> I2Bot: A open-source tool for simulating multi-modal and embodied insect navigation</font> </i>
+  <i> <font size="5"> I2Bot: A open-source tool for simulating multi-modal and embodied insect navigation</font> </i>
 </div>
 
 ---
@@ -58,7 +57,7 @@ Files are constructed as a Webots project
 |   |   |-- trial_wide.png
 |-- media # files for README.md
 ```
-### Morphology
+### Robot Morphology
 The morphology and the positions of each organs and limbs are reconstructed by the measurements of real desert ant *Cataglyphis fortis* by Wehner.
 ![](media/desert_ant_morph.png)
 
@@ -106,9 +105,15 @@ As the ant robot always headed to the red ball in the artificial visual sceene.
   Plume tracking of walking insect in turbulent odor environment:
   ![](media/odor_plume_tracking_new.gif)
 
++ Embodiment: varied antenna lengths
+  ![](media/varied_antenna_length.gif)
+
+  This also demonstrate the potential of I2Bot for multiple agent simulation, i.e., *Swarm Intelligence and Swarm Robotics*
 
 ### How to run the demos
-Like any Webots project, open the `.wbt` file, find the node of the robot in the `scene tree`, set the `controller` field of the robot node to be `I2Bot`. You may need to change the code in the `I2Bot.py` file:
+1. Download and install open-sourced Webots from:https://cyberbotics.com/ 
+2. Follow [this tutorial](https://cyberbotics.com/doc/guide/programming-fundamentals) to setup the programm language environment (support C/C++, Java, Python or MATLAB)
+3. Like any Webots project, open the `.wbt` file, find the node of the robot in the `scene tree`, set the `controller` field of the robot node to be `I2Bot`. You may need to change the code in the `I2Bot.py` file:
 
 ```python
 # demo of ['gait', 'PI', 'VisualBeacon', 'VisionCompass', 'OdorPlumeTracking', 'OdorTrialFollowing']
