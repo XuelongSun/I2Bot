@@ -13,6 +13,11 @@
 
 ---
 
+#### Linked paper
++ preprint:
+
+[Sun, X., Mangan, M., Yue, S., & Peng, J. (2024). I2Bot: an open-source tool for multi-modal and embodied simulation of insect navigation. bioRxiv, 2024-07.](https://www.biorxiv.org/content/10.1101/2024.07.11.603012v1.full)
+
 ### Files
 Files are constructed as a Webots project
 ```shell
