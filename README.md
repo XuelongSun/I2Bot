@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/Webots-Build-red">
   <a><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
 
-  <i> <font size="5"> I2Bot: A open-source tool for simulating multi-modal and embodied insect navigation</font> </i>
+  <i> <font size="5"> I2Bot: An open-source tool for simulating multi-modal and embodied insect navigation</font> </i>
 </div>
 
 ---
@@ -19,7 +19,7 @@
 [Sun, X., Mangan, M., Yue, S., & Peng, J. (2024). I2Bot: an open-source tool for multi-modal and embodied simulation of insect navigation. bioRxiv, 2024-07.](https://www.biorxiv.org/content/10.1101/2024.07.11.603012v1.full)
 
 ### Files
-Files are constructed as a Webots project
+Files are constructed as a [Webots project](https://www.cyberbotics.com/doc/guide/tutorial-1-your-first-simulation-in-webots?version=master)
 ```shell
 |-- controllers
 |   |-- I2Bot  # main controller for robot
@@ -36,7 +36,7 @@ Files are constructed as a Webots project
 |   |   |-- walker.py # FK and IK gait control
 |   |-- odor_plume_supervisor # controller for simulating odor plume
 |   |   |-- odor_plume_supervisor.py
-|   |   |-- pompy
+|   |   |-- pompy # Puff-based odour plume model in Python: https://github.com/InsectRobotics/pompy
 |   |       |-- models.py
 |   |       |-- processors.py
 |-- libraries
@@ -63,7 +63,8 @@ Files are constructed as a Webots project
 |-- media # files for README.md
 ```
 ### Robot Morphology
-The morphology and the positions of each organs and limbs are reconstructed by the measurements of real desert ant *Cataglyphis fortis* by Wehner.
+The morphology and the positions of each organs and limbs are reconstructed by the measurements of real desert ant *Cataglyphis fortis* by Wehner. For more details see the paper:
+[Wehner, R. (1983). Taxonomie, Funktionsmorphologie und Zoogeographie der saharischen Wüstenameise Cataglyphis fortis (Forel 1902) stat. nov. Senckenbergiana biol, 64, 89-132.](https://www.antsofafrica.org/ant_species_2012/cataglyphis/cataglyphis_fortis/wehner-1983-3052.pdf)
 ![](media/desert_ant_morph.png)
 
 ### Demos
