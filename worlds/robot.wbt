@@ -1,0 +1,1557 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/Parquetry.proto"
+
+WorldInfo {
+  basicTimeStep 8
+  contactProperties [
+    ContactProperties {
+      bounce 0.1
+      softERP 0.1
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.0527015321600833 -0.08041320500070795 -0.9953674020026444 5.118568440792591
+  position -0.7656608493710715 -0.9587234092689236 0.26456963140905143
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+  castShadows FALSE
+}
+Floor {
+  appearance Parquetry {
+    type "light strip"
+  }
+}
+DEF ant Robot {
+  translation -0.169652 0.00781883 0.346642
+  rotation -0.11747225062694666 -0.2347267916270668 -0.9649370982738219 0.04771863867248036
+  children [
+    DEF head Hinge2Joint {
+      jointParameters HingeJointParameters {
+        position -0.2000056422371907
+        axis 0 1 0
+        anchor 0.1 0 0
+      }
+      jointParameters2 JointParameters {
+        position 2.8571407274368542e-08
+      }
+      device [
+        RotationalMotor {
+          name "MotorHeadY"
+          maxTorque 1000
+        }
+        PositionSensor {
+          name "PSensorHeadY"
+        }
+      ]
+      device2 [
+        RotationalMotor {
+          name "MotorHeadZ"
+          maxTorque 1000
+        }
+        PositionSensor {
+          name "PSensorHeadZ"
+        }
+      ]
+      endPoint Solid {
+        translation -0.007808125790472367 -2.3820548359621513e-06 -0.021855652685049597
+        rotation -1.4285703637184129e-08 -0.9999999999999899 1.4237648497435085e-07 0.2000056422371921
+        children [
+          DEF left_eye Camera {
+            translation -0.0586601 -0.0770091 0.0625
+            rotation -0.10124704903090816 0.012681806141418225 -0.9947804817423411 2.6381
+            children [
+              DEF left_eye Transform {
+                translation -0.02 0 -0.01
+                rotation 0 1 0 0
+                children [
+                  Shape {
+                    appearance PBRAppearance {
+                      baseColor 0 0 0
+                    }
+                    geometry Sphere {
+                      radius 0.026
+                    }
+                  }
+                ]
+              }
+            ]
+            name "left_camera"
+            boundingObject USE left_eye
+            fieldOfView 3
+            width 74
+            height 19
+          }
+          DEF right_eye Camera {
+            translation -0.0586601 0.0770091 0.0625
+            rotation 0.0944626446130286 0.03982601880912104 0.9947314697939985 2.60314
+            children [
+              DEF right_eye Transform {
+                translation -0.02 0 -0.01
+                rotation 0 1 0 0
+                children [
+                  Shape {
+                    appearance PBRAppearance {
+                      baseColor 0 0 0
+                    }
+                    geometry Sphere {
+                      radius 0.026
+                    }
+                  }
+                ]
+              }
+            ]
+            name "right_camera"
+            boundingObject USE right_eye
+            fieldOfView 3
+            width 74
+            height 19
+          }
+          DEF abstract_eye Camera {
+            translation 0 0 0.3
+            rotation 0 1 0 -1.5707953071795862
+            fieldOfView 3.1415
+            width 38
+            height 38
+            projection "spherical"
+          }
+          DEF left_antenna Hinge2Joint {
+            jointParameters HingeJointParameters {
+              position -0.4
+              axis 0 1 0
+              anchor -0.0845 -0.04 0.02
+            }
+            jointParameters2 JointParameters {
+              position 0.8956685134750993
+            }
+            device [
+              RotationalMotor {
+                name "MotorAntennaeL1"
+              }
+              PositionSensor {
+                name "PSensorAntennaeL1"
+              }
+            ]
+            device2 [
+              RotationalMotor {
+                name "MotorAntennaeL2"
+              }
+              PositionSensor {
+                name "PSensorAntennaeL2"
+              }
+            ]
+            endPoint Solid {
+              translation -0.15098878160907753 -0.13016242711112205 -0.008111005986480603
+              rotation -0.5468708367986387 0.7546573060896906 0.36252536218119635 1.4415390639574202
+              children [
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 1
+                    anchor 0 0 -0.12
+                  }
+                  device [
+                    RotationalMotor {
+                      name "MotorAntennaeL3"
+                    }
+                    PositionSensor {
+                      name "PSensorAntennaeL3"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 0.13776983698767287 -0.20846099502826118
+                    rotation 1 0 0 0.9999999999999998
+                    children [
+                      DEF TSensorAL TouchSensor {
+                        translation 0 0 -0.16
+                        name "TSensorAL"
+                      }
+                      DEF OSensorL Transform {
+                        translation 0 0 -0.16
+                      }
+                      Receiver {
+                        translation 0 0 -0.16
+                        name "OSensorL"
+                        model "OSensorL"
+                        channel 11
+                      }
+                      DistanceSensor {
+                        translation 0 0 -0.15
+                        name "DSensorL"
+                        type "infra-red"
+                      }
+                      DEF antennae_s2 Shape {
+                        appearance DEF antenna PBRAppearance {
+                          baseColor 0 0 0
+                          roughness 0.2
+                          metalness 0.4
+                        }
+                        geometry Capsule {
+                          height 0.317
+                          radius 0.005
+                        }
+                      }
+                    ]
+                    boundingObject USE antennae_s2
+                    physics Physics {
+                      density 600
+                    }
+                  }
+                }
+                DEF antennae_s1 Shape {
+                  appearance USE antenna
+                  geometry Capsule {
+                    height 0.224
+                    radius 0.0075
+                  }
+                }
+              ]
+              boundingObject USE antennae_s1
+              physics Physics {
+                density 600
+              }
+            }
+          }
+          DEF right_antenna Hinge2Joint {
+            jointParameters HingeJointParameters {
+              position -0.4
+              axis 0 1 0
+              anchor -0.083 0.04 0.02
+            }
+            jointParameters2 JointParameters {
+              position -0.704575528517515
+            }
+            device [
+              RotationalMotor {
+                name "MotorAntennaeR1"
+              }
+              PositionSensor {
+                name "PSensorAntennaeR1"
+              }
+            ]
+            device2 [
+              RotationalMotor {
+                name "MotorAntennaeR2"
+              }
+              PositionSensor {
+                name "PSensorAntennaeR2"
+              }
+            ]
+            endPoint Solid {
+              translation -0.16187602421591216 0.11280265893895977 -0.013348248159514683
+              rotation 0.4617022161403872 0.8325589772275249 -0.30606635399682985 1.3448838277063815
+              children [
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position -1
+                    anchor 0 0 -0.12
+                  }
+                  device [
+                    RotationalMotor {
+                      name "MotorAntennaeR3"
+                    }
+                    PositionSensor {
+                      name "PSensorAntennaeR3"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.13776983698767287 -0.20846099502826118
+                    rotation -1 0 0 0.9999999999999998
+                    children [
+                      DEF TSensorAR TouchSensor {
+                        translation 0 0 -0.16
+                        name "TSensorAR"
+                      }
+                      DEF OSensorR Transform {
+                        translation 0 0 -0.16
+                      }
+                      Receiver {
+                        translation 0 0 -0.16
+                        name "OSensorR"
+                        model "OSensorR"
+                        channel 12
+                      }
+                      DistanceSensor {
+                        translation 0 0 -0.15
+                        name "DSensorR"
+                        type "infra-red"
+                      }
+                      DEF antennae_s2 Shape {
+                        appearance USE antenna
+                        geometry Capsule {
+                          height 0.317
+                          radius 0.005
+                        }
+                      }
+                    ]
+                    boundingObject USE antennae_s2
+                    physics Physics {
+                      density 600
+                    }
+                  }
+                }
+                DEF antennae_s1 Shape {
+                  appearance USE antenna
+                  geometry Capsule {
+                    height 0.224
+                    radius 0.0075
+                  }
+                }
+              ]
+              name "solid(1)"
+              boundingObject USE antennae_s1
+              physics Physics {
+                density 600
+              }
+            }
+          }
+          DEF ShapeHead Transform {
+            rotation 1 0 0 -1.5707953071795862
+            children [
+              Shape {
+                appearance DEF AppHead PBRAppearance {
+                  baseColor 0.3 0 0
+                  roughness 0.5
+                  metalness 0.1
+                }
+                geometry Capsule {
+                  height 0.0088
+                  radius 0.1
+                }
+              }
+            ]
+          }
+        ]
+        name "head"
+        boundingObject USE ShapeHead
+        physics Physics {
+          density 600
+          centerOfMass [
+            0 0 0
+          ]
+        }
+      }
+    }
+    DEF abdomen Hinge2Joint {
+      jointParameters HingeJointParameters {
+        position 0.5001056572351295
+        axis 0 1 0
+        anchor 0.4838 0 0
+      }
+      jointParameters2 JointParameters {
+        position 3.648138958045601e-06
+      }
+      device [
+        RotationalMotor {
+          name "MotorAbdomenY"
+          maxTorque 1000
+        }
+        PositionSensor {
+          name "PSensorAbdomenY"
+        }
+      ]
+      device2 [
+        RotationalMotor {
+          name "MotorAbdomenZ"
+          maxTorque 1000
+        }
+        PositionSensor {
+          name "PSensorAbdomenZ"
+        }
+      ]
+      endPoint Solid {
+        translation 0.5857657201388332 2.749281315343381e-07 -0.055722702163340514
+        rotation 3.0857343414385648e-06 -0.9999999999936071 1.8066146556658506e-06 1.0706896499500373
+        children [
+          DEF ShapeAbdomen Transform {
+            children [
+              Shape {
+                appearance DEF AppAbdomen PBRAppearance {
+                  baseColor 0.05 0 0
+                  roughness 0.2
+                  metalness 0.2
+                }
+                geometry Capsule {
+                  bottom FALSE
+                  height 0.07445
+                  radius 0.09343
+                }
+              }
+              Transform {
+                translation 0 0 -0.117
+                rotation 0 1 0 3.14159
+                children [
+                  Shape {
+                    appearance USE AppAbdomen
+                    geometry Cone {
+                      bottomRadius 0.0934
+                      height 0.16
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+        name "abdomen"
+        boundingObject Transform {
+          translation 0 0 -0.03
+          children [
+            Shape {
+              geometry Capsule {
+                height 0.13
+                radius 0.0934
+                subdivision 16
+              }
+            }
+          ]
+        }
+        physics Physics {
+          density 600
+        }
+      }
+    }
+    DEF legFL Hinge2Joint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor 0.23902 -0.07 -0.02
+      }
+      jointParameters2 JointParameters {
+        axis 1 0 0
+      }
+      device [
+        PositionSensor {
+          name "PSensorLegLF1"
+        }
+        DEF motor1 RotationalMotor {
+          name "MotorLegLF1"
+          maxTorque 50
+        }
+      ]
+      device2 [
+        PositionSensor {
+          name "PSensorLegLF2"
+        }
+        DEF motor2 RotationalMotor {
+          name "MotorLegLF2"
+          maxTorque 50
+        }
+      ]
+      endPoint DEF solid Solid {
+        translation 0.23999999999957053 -0.0700000290053521 -0.020000000658300085
+        rotation -0.8628565845386894 0.35740682182267647 -0.3574057613313489 1.7177603002506652
+        children [
+          DEF coxa HingeJoint {
+            jointParameters HingeJointParameters {
+              position -0.3200045616171467
+              anchor 0 0 -0.02
+            }
+            device [
+              DEF motor RotationalMotor {
+                name "MotorLegLF3"
+                maxTorque 50
+              }
+              PositionSensor {
+                name "PSensorLegLF3"
+              }
+            ]
+            endPoint DEF solid Solid {
+              translation 0 -0.03774850687936336 -0.13390807797682558
+              rotation -1 0 0 0.32000456161714685
+              children [
+                DEF femur HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 1.5600094204377442
+                    anchor 0 0 -0.13
+                  }
+                  device [
+                    DEF motor RotationalMotor {
+                      name "MotorLegLF4"
+                      maxTorque 50
+                    }
+                    PositionSensor {
+                      name "PSensorLegLF4"
+                    }
+                  ]
+                  endPoint DEF solid Solid {
+                    translation 0 0.10399394947653226 -0.1311218165055829
+                    rotation 1 0 0 1.5600094204377442
+                    children [
+                      DEF tibia HingeJoint {
+                        jointParameters HingeJointParameters {
+                          position 5.17014180522712e-06
+                          anchor 0 0 -0.104
+                        }
+                        device [
+                          DEF motor RotationalMotor {
+                            name "MotorLegLF5"
+                            maxTorque 50
+                          }
+                          PositionSensor {
+                            name "PSensorLegLF5"
+                          }
+                        ]
+                        endPoint Solid {
+                          translation 0 1.545205394303291e-06 -0.20999999998855579
+                          rotation 1 0 0 1.4946392077154111e-05
+                          children [
+                            DEF FL_TarsusClaw Solid {
+                              translation 0 0 -0.11
+                              children [
+                                DEF TSensorLegLF TouchSensor {
+                                  translation 1.153040067777833e-05 1.6503706271098206e-05 5.367521444139822e-05
+                                  rotation 0.9710351995038567 -0.22479448828916865 -0.08098196934698366 3.9171629736637116e-07
+                                  name "TSensorLegLF"
+                                  boundingObject Sphere {
+                                    radius 0.01
+                                  }
+                                  physics Physics {
+                                    density 20
+                                    centerOfMass [
+                                      0 0 0
+                                    ]
+                                  }
+                                }
+                                DEF ShapeClaw Shape {
+                                  appearance DEF AppLeg PBRAppearance {
+                                    baseColor 0 0 0
+                                    roughness 0.5
+                                    metalness 0.4
+                                  }
+                                  geometry Sphere {
+                                    radius 0.0095
+                                  }
+                                }
+                              ]
+                              name "fl_tarsus_claw"
+                              boundingObject USE ShapeClaw
+                              physics Physics {
+                              }
+                            }
+                            DEF ShapeFTarsus Shape {
+                              appearance DEF AppLeg PBRAppearance {
+                                baseColor 0 0 0
+                                roughness 0.5
+                                metalness 0.4
+                              }
+                              geometry Capsule {
+                                height 0.19333
+                                radius 0.00584
+                              }
+                            }
+                          ]
+                          name "fl_tarsus"
+                          boundingObject USE ShapeFTarsus
+                          physics Physics {
+                          }
+                        }
+                      }
+                      DEF ShapeFTibia Shape {
+                        appearance DEF AppLeg PBRAppearance {
+                          baseColor 0 0 0
+                          roughness 0.5
+                          metalness 0.4
+                        }
+                        geometry Capsule {
+                          height 0.19346
+                          radius 0.01095
+                        }
+                      }
+                    ]
+                    name "fl_tibia"
+                    boundingObject USE ShapeFTibia
+                    physics Physics {
+                    }
+                  }
+                }
+                DEF ShapeFFemur Shape {
+                  appearance DEF AppLeg PBRAppearance {
+                    baseColor 0 0 0
+                    roughness 0.5
+                    metalness 0.4
+                  }
+                  geometry Capsule {
+                    height 0.2175
+                    radius 0.0146
+                  }
+                }
+              ]
+              name "fl_femur"
+              boundingObject USE ShapeFFemur
+              physics Physics {
+              }
+            }
+          }
+          DEF ShapeFCoxa Shape {
+            appearance DEF AppLeg PBRAppearance {
+              baseColor 0 0 0
+              roughness 0.5
+              metalness 0.4
+            }
+            geometry Capsule {
+              height 0.009
+              radius 0.01095
+            }
+          }
+        ]
+        name "fl_coxa"
+        boundingObject USE ShapeFCoxa
+        physics Physics {
+        }
+      }
+    }
+    DEF legFR Hinge2Joint {
+      jointParameters HingeJointParameters {
+        position 0.09695967576397689
+        axis 0 0 1
+        anchor 0.23902 0.07 -0.02
+      }
+      jointParameters2 JointParameters {
+        position 7.719972032465481e-06
+        axis 1 0 0
+      }
+      device [
+        DEF motor1 RotationalMotor {
+          name "MotorLegRF1"
+          maxTorque 50
+        }
+        PositionSensor {
+          name "PSensorLegRF1"
+        }
+      ]
+      device2 [
+        PositionSensor {
+          name "PSensorLegRF2"
+        }
+        DEF motor2 RotationalMotor {
+          name "MotorLegRF2"
+          maxTorque 50
+        }
+      ]
+      endPoint DEF solid Solid {
+        translation 0.2399953965283459 0.07009487682799691 -0.02000000000010858
+        rotation -0.3167204791346907 0.6707070278008901 -0.6707012904081727 2.528135172740937
+        children [
+          DEF coxa HingeJoint {
+            jointParameters HingeJointParameters {
+              position -0.34651870990771394
+              anchor 0 0 -0.02
+            }
+            device [
+              DEF motor RotationalMotor {
+                name "MotorLegRF3"
+                maxTorque 50
+              }
+              PositionSensor {
+                name "PSensorLegRF3"
+              }
+            ]
+            endPoint DEF solid Solid {
+              translation 2.220446049249905e-16 -0.04075506087482779 -0.13286728938483466
+              rotation -1 0 0 0.3465187099077139
+              children [
+                DEF femur HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 1.5865197553619825
+                    anchor 0 0 -0.13
+                  }
+                  device [
+                    DEF motor RotationalMotor {
+                      name "MotorLegRF4"
+                      maxTorque 50
+                    }
+                    PositionSensor {
+                      name "PSensorLegRF4"
+                    }
+                  ]
+                  endPoint DEF solid Solid {
+                    translation -4.237176950638696e-06 0.10397432990947786 -0.12836449722216556
+                    rotation 0.9999999999992709 8.335372443289612e-07 8.738466041801509e-07 1.5865201793079904
+                    children [
+                      DEF tibia HingeJoint {
+                        jointParameters HingeJointParameters {
+                          position 1.6685064004316543e-08
+                          anchor 0 0 -0.104
+                        }
+                        device [
+                          DEF motor RotationalMotor {
+                            name "MotorLegRF5"
+                            maxTorque 50
+                          }
+                          PositionSensor {
+                            name "PSensorLegRF5"
+                          }
+                        ]
+                        endPoint Solid {
+                          translation 0 -2.881776280086848e-10 -0.21000000000000035
+                          rotation 1 0 0 0
+                          children [
+                            DEF FR_TarsusClaw Solid {
+                              translation 0 0 -0.106
+                              children [
+                                DEF TSensorLegRF TouchSensor {
+                                  translation 2.008700729916324e-06 -2.823354399217326e-06 -3.084555855473181e-06
+                                  rotation 0.9958421839420527 0.08441513406479012 0.034240762584186096 5.88457381974625e-11
+                                  name "TSensorLegRF"
+                                  boundingObject Sphere {
+                                    radius 0.01
+                                  }
+                                  physics Physics {
+                                    density 20
+                                    centerOfMass [
+                                      0 0 0
+                                    ]
+                                  }
+                                }
+                                DEF ShapeClaw Shape {
+                                  appearance USE AppLeg
+                                  geometry Sphere {
+                                    radius 0.0095
+                                  }
+                                }
+                              ]
+                              name "fl_tarsus_claw"
+                              boundingObject USE ShapeClaw
+                              physics Physics {
+                              }
+                            }
+                            DEF ShapeFTarsus Shape {
+                              appearance DEF AppLeg PBRAppearance {
+                                baseColor 0 0 0
+                                roughness 0.5
+                                metalness 0.4
+                              }
+                              geometry Capsule {
+                                height 0.19333
+                                radius 0.00584
+                              }
+                            }
+                            TouchSensor {
+                              translation 0 0 -0.106
+                              name "TSensorLegFR"
+                              boundingObject USE ShapeClaw
+                            }
+                          ]
+                          name "fl_tarsus"
+                          boundingObject USE ShapeFTarsus
+                          physics Physics {
+                          }
+                        }
+                      }
+                      DEF ShapeFTibia Shape {
+                        appearance USE AppLeg
+                        geometry Capsule {
+                          height 0.19346
+                          radius 0.01095
+                        }
+                      }
+                    ]
+                    name "fl_tibia"
+                    boundingObject USE ShapeFTibia
+                    physics Physics {
+                    }
+                  }
+                }
+                DEF ShapeFFemur Shape {
+                  appearance USE AppLeg
+                  geometry Capsule {
+                    height 0.2175
+                    radius 0.0146
+                  }
+                }
+              ]
+              name "fl_femur"
+              boundingObject USE ShapeFFemur
+              physics Physics {
+              }
+            }
+          }
+          DEF ShapeFCoxa Shape {
+            appearance USE AppLeg
+            geometry Capsule {
+              height 0.009
+              radius 0.01095
+            }
+          }
+        ]
+        name "fr_coxa"
+        boundingObject USE ShapeFCoxa
+        physics Physics {
+        }
+      }
+    }
+    DEF legML Hinge2Joint {
+      jointParameters HingeJointParameters {
+        position -0.0969603576172331
+        axis 0 0 1
+        anchor 0.34 -0.02 -0.02
+      }
+      jointParameters2 JointParameters {
+        position -5.53927054185431e-05
+        axis 1 0 0
+      }
+      device [
+        DEF motor1 RotationalMotor {
+          name "MotorLegLM1"
+          maxTorque 50
+        }
+        PositionSensor {
+          name "PSensorLegLM1"
+        }
+      ]
+      device2 [
+        DEF motor2 RotationalMotor {
+          name "MotorLegLM2"
+          maxTorque 50
+        }
+        PositionSensor {
+          name "PSensorLegLM2"
+        }
+      ]
+      endPoint DEF solid Solid {
+        translation 0.3472706562273196 -0.050847548319575483 -0.02999873454071208
+        rotation -0.997654391362249 0.048404350626827235 -0.048401799925370304 1.573199065405331
+        children [
+          DEF ShapeMCoxa Shape {
+            appearance USE AppLeg
+            geometry Capsule {
+              height 0.0146
+              radius 0.0219
+            }
+          }
+          DEF coxa HingeJoint {
+            jointParameters HingeJointParameters {
+              position -0.41156126181378083
+              anchor 0 0 -0.027
+            }
+            device [
+              DEF motor RotationalMotor {
+                name "MotorLegLM3"
+                maxTorque 50
+              }
+              PositionSensor {
+                name "PSensorLegLM3"
+              }
+            ]
+            endPoint DEF solid Solid {
+              translation 0 -0.0573433164930691 -0.16333087188924275
+              rotation -1 0 0 0.411561261813781
+              children [
+                DEF ShapeMFemur Shape {
+                  appearance USE AppLeg
+                  geometry Capsule {
+                    height 0.26
+                    radius 0.0146
+                  }
+                }
+                DEF femur HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 1.4144902265977028
+                    anchor 0 0 -0.147
+                  }
+                  device [
+                    DEF motor RotationalMotor {
+                      name "MotorLegLM4"
+                      maxTorque 50
+                    }
+                    PositionSensor {
+                      name "PSensorLegLM4"
+                    }
+                  ]
+                  endPoint DEF solid Solid {
+                    translation 0 0.1215005134243221 -0.16614746034403668
+                    rotation 1 0 0 1.4144902265977028
+                    children [
+                      DEF ShapeMTibia Shape {
+                        appearance USE AppLeg
+                        geometry Capsule {
+                          height 0.22074
+                          radius 0.01095
+                        }
+                      }
+                      DEF tibia HingeJoint {
+                        jointParameters HingeJointParameters {
+                          position -1.5457214910841254e-05
+                          anchor 0 0 -0.121
+                        }
+                        device [
+                          DEF motor RotationalMotor {
+                            name "MotorLegLM5"
+                            maxTorque 50
+                          }
+                          PositionSensor {
+                            name "PSensorLegLM5"
+                          }
+                        ]
+                        endPoint Solid {
+                          translation 0 -1.4979188845211122e-06 -0.25299999999150913
+                          rotation -0.9999999999999999 0 0 1.1385384307098475e-05
+                          children [
+                            DEF ShapeMTarsus Shape {
+                              appearance USE AppLeg
+                              geometry Capsule {
+                                height 0.254
+                                radius 0.0059
+                              }
+                            }
+                            DEF ML_TarsusClaw Solid {
+                              translation 0 0 -0.14
+                              children [
+                                DEF TSensorLegLM TouchSensor {
+                                  translation -2.810521953167111e-06 -5.16578711174942e-05 1.7951713401020974e-05
+                                  rotation -0.9906188782333619 0.10901287103156082 0.08240407779431864 3.055290586499416e-07
+                                  name "TSensorLegLM"
+                                  boundingObject Sphere {
+                                    radius 0.01
+                                  }
+                                  physics Physics {
+                                    density 20
+                                    centerOfMass [
+                                      0 0 0
+                                    ]
+                                  }
+                                }
+                                DEF ShapeClaw Shape {
+                                  appearance USE AppLeg
+                                  geometry Sphere {
+                                    radius 0.0095
+                                  }
+                                }
+                              ]
+                              name "fl_tarsus_claw"
+                              boundingObject USE ShapeClaw
+                              physics Physics {
+                                centerOfMass [
+                                  0 0 0
+                                ]
+                              }
+                            }
+                            DEF t_sensor TouchSensor {
+                              translation 0 0 -0.14
+                              name "TSensorLegML"
+                              boundingObject USE ShapeClaw
+                            }
+                          ]
+                          boundingObject USE ShapeMTarsus
+                          physics Physics {
+                          }
+                        }
+                      }
+                    ]
+                    boundingObject USE ShapeMTibia
+                    physics Physics {
+                    }
+                  }
+                }
+              ]
+              boundingObject USE ShapeMFemur
+              physics Physics {
+              }
+            }
+          }
+        ]
+        boundingObject USE ShapeMCoxa
+        physics Physics {
+        }
+      }
+    }
+    DEF legMR Hinge2Joint {
+      jointParameters HingeJointParameters {
+        position -0.09694743321741493
+        axis 0 0 1
+        anchor 0.34 0.02 -0.02
+      }
+      jointParameters2 JointParameters {
+        position 0.01292995492943712
+        axis 1 0 0
+      }
+      device [
+        DEF motor1 RotationalMotor {
+          name "MotorLegRM1"
+          maxTorque 50
+        }
+        PositionSensor {
+          name "PSensorLegRM1"
+        }
+      ]
+      device2 [
+        DEF motor2 RotationalMotor {
+          name "MotorLegRM2"
+          maxTorque 50
+        }
+        PositionSensor {
+          name "PSensorLegRM2"
+        }
+      ]
+      endPoint DEF solid Solid {
+        translation 0.35286915729905133 0.049017085024530005 -0.029612157254836634
+        rotation 0.03450322410261721 0.7112401444412547 -0.7021018333986229 3.2096845259102733
+        children [
+          DEF ShapeMCoxa Shape {
+            appearance USE AppLeg
+            geometry Capsule {
+              height 0.0146
+              radius 0.0219
+            }
+          }
+          DEF coxa HingeJoint {
+            jointParameters HingeJointParameters {
+              position -0.3850645905214974
+              anchor 0 0 -0.027
+            }
+            device [
+              DEF motor RotationalMotor {
+                name "MotorLegRM3"
+                maxTorque 50
+              }
+              PositionSensor {
+                name "PSensorLegRM3"
+              }
+            ]
+            endPoint DEF solid Solid {
+              translation 0 -0.057471386400061865 -0.16480381768526997
+              rotation -0.9999999999999999 0 0 0.3850645905214969
+              children [
+                DEF ShapeMFemur Shape {
+                  appearance USE AppLeg
+                  geometry Capsule {
+                    height 0.26
+                    radius 0.0146
+                  }
+                }
+                DEF femur HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 1.387959300098707
+                    anchor 0 0 -0.147
+                  }
+                  device [
+                    DEF motor RotationalMotor {
+                      name "MotorLegRM4"
+                      maxTorque 50
+                    }
+                    PositionSensor {
+                      name "PSensorLegRM4"
+                    }
+                  ]
+                  endPoint DEF solid Solid {
+                    translation 0 0.12094981415078226 -0.1693638649810604
+                    rotation 1 0 0 1.387959300098707
+                    children [
+                      DEF ShapeMTibia Shape {
+                        appearance USE AppLeg
+                        geometry Capsule {
+                          height 0.22074
+                          radius 0.01095
+                        }
+                      }
+                      DEF tibia HingeJoint {
+                        jointParameters HingeJointParameters {
+                          position -1.9944919687008198e-05
+                          anchor 0 0 -0.121
+                        }
+                        device [
+                          DEF motor RotationalMotor {
+                            name "MotorLegRM5"
+                            maxTorque 50
+                          }
+                          PositionSensor {
+                            name "PSensorLegRM5"
+                          }
+                        ]
+                        endPoint Solid {
+                          translation 0 -2.632729398513891e-06 -0.252999999973747
+                          rotation -1 0 0 1.9944924546205935e-05
+                          children [
+                            DEF ShapeMTarsus Shape {
+                              appearance USE AppLeg
+                              geometry Capsule {
+                                height 0.254
+                                radius 0.0059
+                              }
+                            }
+                            DEF MR_TarsusClaw Solid {
+                              translation 0 0 -0.14
+                              children [
+                                DEF TSensorLegRM TouchSensor {
+                                  translation 2.2044446989666344e-05 -7.345174065143123e-05 5.049102944187922e-05
+                                  rotation -0.8087195426560022 -0.4894666104274426 -0.3261826767364215 3.8672605844235106e-07
+                                  name "TSensorLegRM"
+                                  boundingObject Sphere {
+                                    radius 0.01
+                                  }
+                                  physics Physics {
+                                    density 20
+                                    centerOfMass [
+                                      0 0 0
+                                    ]
+                                  }
+                                }
+                                DEF ShapeClaw Shape {
+                                  appearance USE AppLeg
+                                  geometry Sphere {
+                                    radius 0.0095
+                                  }
+                                }
+                              ]
+                              name "fl_tarsus_claw"
+                              boundingObject USE ShapeClaw
+                              physics Physics {
+                              }
+                            }
+                            TouchSensor {
+                              name "TSensorLegMR"
+                            }
+                          ]
+                          boundingObject USE ShapeMTarsus
+                          physics Physics {
+                          }
+                        }
+                      }
+                    ]
+                    boundingObject USE ShapeMTibia
+                    physics Physics {
+                    }
+                  }
+                }
+              ]
+              boundingObject USE ShapeMFemur
+              physics Physics {
+              }
+            }
+          }
+        ]
+        name "solid(1)"
+        boundingObject USE ShapeMCoxa
+        physics Physics {
+        }
+      }
+    }
+    DEF legHL Hinge2Joint {
+      jointParameters HingeJointParameters {
+        position 0.09694661637005343
+        axis 0 0 1
+        anchor 0.426276 -0.03 -0.0340389
+      }
+      jointParameters2 JointParameters {
+        position -7.558413322216069e-06
+        axis 1 0 0
+      }
+      device [
+        DEF motor1 RotationalMotor {
+          name "MotorLegLH1"
+          maxTorque 50
+        }
+        PositionSensor {
+          name "PSensorLegLH1"
+        }
+      ]
+      device2 [
+        DEF motor2 RotationalMotor {
+          name "MotorLegLH2"
+          maxTorque 50
+        }
+        PositionSensor {
+          name "PSensorLegLH2"
+        }
+      ]
+      endPoint DEF solid Solid {
+        translation 0.4338543086885475 -0.06945173297459425 -0.030000225473253157
+        rotation -0.831611996057736 -0.39269697302922374 0.39269654363968315 1.754159677960532
+        children [
+          DEF ShapeHCoxa Shape {
+            appearance USE AppLeg
+            geometry Capsule {
+              height 0.04926
+              radius 0.0219
+            }
+          }
+          DEF coxa HingeJoint {
+            jointParameters HingeJointParameters {
+              position -0.7780148666093705
+              anchor 0 0 -0.046
+            }
+            device [
+              DEF motor RotationalMotor {
+                name "MotorLegLH3"
+                maxTorque 50
+              }
+              PositionSensor {
+                name "PSensorLegLH3"
+              }
+            ]
+            endPoint DEF solid Solid {
+              translation 0 -0.12914348682074037 -0.17706471612058217
+              rotation -1 0 0 0.7780148666093706
+              children [
+                DEF ShapeHFemur Shape {
+                  appearance USE AppLeg
+                  geometry Capsule {
+                    height 0.336
+                    radius 0.0146
+                  }
+                }
+                DEF femur HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 1.8069872585516145
+                    anchor 0 0 -0.184
+                  }
+                  device [
+                    DEF motor RotationalMotor {
+                      name "MotorLegLH4"
+                      maxTorque 50
+                    }
+                    PositionSensor {
+                      name "PSensorLegLH4"
+                    }
+                  ]
+                  endPoint DEF solid Solid {
+                    translation 0 0.157502288963246 -0.14609183503072512
+                    rotation 1 0 0 1.8069872585516145
+                    children [
+                      DEF ShapeHTibia Shape {
+                        appearance USE AppLeg
+                        geometry Capsule {
+                          height 0.3
+                          radius 0.01095
+                        }
+                      }
+                      DEF tibia HingeJoint {
+                        jointParameters HingeJointParameters {
+                          position 6.023528942677066e-06
+                          anchor 0 0 -0.161
+                        }
+                        device [
+                          DEF motor RotationalMotor {
+                            name "MotorLegLH5"
+                            maxTorque 50
+                          }
+                          PositionSensor {
+                            name "PSensorLegLH5"
+                          }
+                        ]
+                        endPoint Solid {
+                          translation 0 1.7257276401305237e-06 -0.3359999999914898
+                          rotation 1 0 0 6.023535226359786e-06
+                          children [
+                            DEF ShapeHTarsus Shape {
+                              appearance USE AppLeg
+                              geometry Capsule {
+                                height 0.339
+                                radius 0.0059
+                              }
+                            }
+                            DEF HL_TarsusClaw Solid {
+                              translation 0 0 -0.18
+                              children [
+                                DEF TSensorLegLH TouchSensor {
+                                  translation -2.181947397919548e-05 -3.21139308506746e-05 6.21914445209093e-06
+                                  rotation -0.623371307483282 0.6647720704644307 0.41168714740324036 2.2983441171078158e-07
+                                  name "TSensorLegLH"
+                                  boundingObject Sphere {
+                                    radius 0.01
+                                  }
+                                  physics Physics {
+                                    density 20
+                                    centerOfMass [
+                                      0 0 0
+                                    ]
+                                  }
+                                }
+                                DEF ShapeClaw Shape {
+                                  appearance USE AppLeg
+                                  geometry Sphere {
+                                    radius 0.0095
+                                  }
+                                }
+                              ]
+                              name "fl_tarsus_claw"
+                              boundingObject USE ShapeClaw
+                              physics Physics {
+                              }
+                            }
+                            DEF t_sensor TouchSensor {
+                              translation 0 0 -0.18
+                              name "TSensorLegHL"
+                              boundingObject USE ShapeClaw
+                            }
+                          ]
+                          boundingObject USE ShapeHTarsus
+                          physics Physics {
+                          }
+                        }
+                      }
+                    ]
+                    boundingObject USE ShapeHTibia
+                    physics Physics {
+                    }
+                  }
+                }
+              ]
+              boundingObject USE ShapeHFemur
+              physics Physics {
+              }
+            }
+          }
+        ]
+        name "solid(2)"
+        boundingObject USE ShapeHCoxa
+        physics Physics {
+        }
+      }
+    }
+    DEF legHR Hinge2Joint {
+      jointParameters HingeJointParameters {
+        position 0.09695958501994469
+        axis 0 0 1
+        anchor 0.426276 0.03 -0.0340389
+      }
+      jointParameters2 JointParameters {
+        position 9.087459264832398e-06
+        axis 1 0 0
+      }
+      device [
+        DEF motor1 RotationalMotor {
+          name "MotorLegRH1"
+          maxTorque 50
+        }
+        PositionSensor {
+          name "PSensorLegRH1"
+        }
+      ]
+      device2 [
+        DEF motor2 RotationalMotor {
+          name "MotorLegRH2"
+          maxTorque 50
+        }
+        PositionSensor {
+          name "PSensorLegRH2"
+        }
+      ]
+      endPoint DEF solid Solid {
+        translation 0.42611019047152715 0.07017272758068936 -0.03000091100321814
+        rotation -0.2457178453164244 -0.6854315947193728 0.6854241529545856 2.6597021333858692
+        children [
+          DEF ShapeHCoxa Shape {
+            appearance USE AppLeg
+            geometry Capsule {
+              height 0.04926
+              radius 0.0219
+            }
+          }
+          DEF coxa HingeJoint {
+            jointParameters HingeJointParameters {
+              position -0.8045206936652498
+              anchor 0 0 -0.046
+            }
+            device [
+              DEF motor RotationalMotor {
+                name "MotorLegRH3"
+                maxTorque 50
+              }
+              PositionSensor {
+                name "PSensorLegRH3"
+              }
+            ]
+            endPoint DEF solid Solid {
+              translation -6.333731270568993e-07 -0.13258059134188183 -0.17359432866158192
+              rotation -0.9999999999997979 6.003385166293699e-07 2.0923872066892693e-07 0.8045206936678813
+              children [
+                DEF ShapeHFemur Shape {
+                  appearance USE AppLeg
+                  geometry Capsule {
+                    height 0.336
+                    radius 0.0146
+                  }
+                }
+                DEF femur HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 1.8335180139717684
+                    anchor 0 0 -0.184
+                  }
+                  device [
+                    DEF motor RotationalMotor {
+                      name "MotorLegRH4"
+                      maxTorque 50
+                    }
+                    PositionSensor {
+                      name "PSensorLegRH4"
+                    }
+                  ]
+                  endPoint DEF solid Solid {
+                    translation 0 0.15644124651018626 -0.1419270111551389
+                    rotation 1 0 0 1.8335180139717684
+                    children [
+                      DEF ShapeHTibia Shape {
+                        appearance USE AppLeg
+                        geometry Capsule {
+                          height 0.3
+                          radius 0.01095
+                        }
+                      }
+                      DEF tibia HingeJoint {
+                        jointParameters HingeJointParameters {
+                          position -8.694366521193437e-07
+                          anchor 0 0 -0.161
+                        }
+                        device [
+                          DEF motor RotationalMotor {
+                            name "MotorLegRH5"
+                            maxTorque 50
+                          }
+                          PositionSensor {
+                            name "PSensorLegRH5"
+                          }
+                        ]
+                        endPoint DEF HR_TarsusClaw Solid {
+                          translation 0 -1.7049505223131059e-07 -0.33600000000735947
+                          rotation -1 0 0 8.693904963621459e-07
+                          children [
+                            DEF ShapeHTarsus Shape {
+                              appearance USE AppLeg
+                              geometry Capsule {
+                                height 0.339
+                                radius 0.0059
+                              }
+                            }
+                            Solid {
+                              translation 0 0 -0.18
+                              children [
+                                DEF TSensorLegRH TouchSensor {
+                                  translation -1.0075352002703042e-07 -7.264208578994236e-06 2.1192308954920414e-06
+                                  rotation -0.4784394004204025 -0.7194314536353936 -0.5035018606176447 2.778136805086595e-11
+                                  name "TSensorLegRH"
+                                  boundingObject Sphere {
+                                    radius 0.01
+                                  }
+                                  physics Physics {
+                                    density 20
+                                    centerOfMass [
+                                      0 0 0
+                                    ]
+                                  }
+                                }
+                                DEF ShapeClaw Shape {
+                                  appearance USE AppLeg
+                                  geometry Sphere {
+                                    radius 0.0095
+                                  }
+                                }
+                              ]
+                              name "fl_tarsus_claw"
+                              boundingObject USE ShapeClaw
+                              physics Physics {
+                              }
+                            }
+                            DEF t_sensor TouchSensor {
+                              translation 0 0 -0.18
+                              name "TSensorLegHR"
+                              boundingObject USE ShapeClaw
+                            }
+                          ]
+                          boundingObject USE ShapeHTarsus
+                          physics Physics {
+                          }
+                        }
+                      }
+                    ]
+                    boundingObject USE ShapeHTibia
+                    physics Physics {
+                    }
+                  }
+                }
+              ]
+              boundingObject USE ShapeHFemur
+              physics Physics {
+              }
+            }
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE ShapeHCoxa
+        physics Physics {
+        }
+      }
+    }
+    DEF thorax Transform {
+      translation 0.19 0 0
+      rotation 0 1 0 -1.5707953071795862
+      children [
+        DEF ShapeThorax Shape {
+          appearance USE AppLeg
+          geometry Capsule {
+            height 0.05839
+            radius 0.06642
+          }
+        }
+      ]
+    }
+    DEF petiole Transform {
+      translation 0.368 0 0
+      rotation 0 1 0 1.5708
+      children [
+        DEF ShapePetiole Shape {
+          appearance USE AppLeg
+          geometry Capsule {
+            height 0.084
+            radius 0.04
+          }
+        }
+      ]
+    }
+    Pen {
+      translation 0 0 -0.19
+      inkColor 0.3294117748737335 0.5098039507865906 0.2078431397676468
+      inkDensity 0.2
+    }
+    Transform {
+      translation 0.09 0 -0.00999954
+      rotation 0 1 0 -1.5707953071795862
+      children [
+        Shape {
+          appearance USE AppLeg
+          geometry Cone {
+            bottomRadius 0.03
+            height 0.03
+          }
+        }
+      ]
+    }
+    Transform {
+      translation 0.45 0 -0.0099999
+      rotation 0 1 0 -1.5707953071795862
+      children [
+        Shape {
+          appearance USE AppLeg
+          geometry Cone {
+            bottomRadius 0.02
+            height 0.07
+          }
+        }
+      ]
+    }
+  ]
+  name "desert_ant"
+  boundingObject Transform {
+    translation 0.274 0 0
+    rotation 0 1 0 1.5708
+    children [
+      Shape {
+        geometry Cylinder {
+          height 0.36
+          radius 0.065
+        }
+      }
+    ]
+  }
+  physics Physics {
+    density 600
+  }
+  controller "<none>"
+  supervisor TRUE
+  window "AIBot"
+}

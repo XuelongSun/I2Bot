@@ -12,7 +12,8 @@
 </div>
 
 ---
-
+**This tool aims to integrate simulation of brain, body, and environment, encompassing the sensory-motor loop.**
+![](media/intro.png)
 #### Linked paper
 + preprint:
 
@@ -54,6 +55,7 @@ Files are constructed as a [Webots project](https://www.cyberbotics.com/doc/guid
 |   |-- path_integration.wbt
 |   |-- visual_beacons.wbt
 |   |-- visual_compass.wbt
+|   |-- robot.wbt # a robot demo
 |   |-- textures
 |   |   |-- sand.jpg
 |   |   |-- trial_loop.png
@@ -158,7 +160,7 @@ def visual_world_mat2obj(mat_filename, obj_filename):
 
 visual_world_mat2obj('world.mat', 'world.obj')
 ```
-then import to Webots (add the file name in the `url` field of node `Shape->Geometry->Mesh`) and set the appreance as you like:
+then import to Webots (add the file name in the `url` field of node `Shape->Geometry->Mesh`) and set the appearance as you like:
 ![](media/WorldCustomize.png)
 
 
