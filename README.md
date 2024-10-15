@@ -14,6 +14,7 @@
 ---
 **This tool aims to integrate simulation of brain, body, and environment, encompassing the sensory-motor loop.**
 ![](media/intro.png)
+
 #### Linked paper
 + preprint:
 
@@ -66,6 +67,7 @@ Files are constructed as a [Webots project](https://www.cyberbotics.com/doc/guid
 ```
 ### Robot Morphology
 The morphology and the positions of each organs and limbs are reconstructed by the measurements of real desert ant *Cataglyphis fortis* by Wehner. For more details see the paper:
+
 [Wehner, R. (1983). Taxonomie, Funktionsmorphologie und Zoogeographie der saharischen Wüstenameise Cataglyphis fortis (Forel 1902) stat. nov. Senckenbergiana biol, 64, 89-132.](https://www.antsofafrica.org/ant_species_2012/cataglyphis/cataglyphis_fortis/wehner-1983-3052.pdf)
 ![](media/desert_ant_morph.png)
 
@@ -119,7 +121,7 @@ As the ant robot always headed to the red ball in the artificial visual sceene.
   This also demonstrate the potential of I2Bot for multiple agent simulation, i.e., *Swarm Intelligence and Swarm Robotics*
 
 ### How to run the demos
-1. Download and install open-sourced Webots from:https://cyberbotics.com/ 
+1. Download and install open-sourced Webots from:https://cyberbotics.com/.
 2. Follow [this tutorial](https://cyberbotics.com/doc/guide/programming-fundamentals) to setup the programm language environment (support C/C++, Java, Python or MATLAB)
 3. Like any Webots project, open the `.wbt` file, find the node of the robot in the `scene tree`, set the `controller` field of the robot node to be `I2Bot`. You may need to change the code in the `I2Bot.py` file:
 
@@ -142,7 +144,7 @@ and then press the `run` button to run the simulation.
 + odor plume tracking
   When using the `odor_plume_tracking.wbt` world file, you may need also modify the `controller` of the olfactory node to change the dynamics of the odor simulation. 
 
-### Customize the 3D world
+### Customize the 3D visual world
 Since Webots supports importing 3D object (a geometry and appearance from a `.dae` or `.obj` file) via the `CadShape` node or `Shape->Geometry->Mesh` node, it is easy to modify the 3D world. 
 
 Previous visual navigation studies apply simulated 3D world defined by a `.mat` file, one can transfer this to a `.obj` file by codes like:
