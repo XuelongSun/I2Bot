@@ -12,8 +12,8 @@
 </div>
 
 ---
-**This tool aims to integrate simulation of brain, body, and environment, encompassing the sensory-motor loop.**
-![](media/intro.png)
+**This tool aims to integrate simulation of brain, body, and environment, encompassing the sensory-motor loop:**
+![](media/Intro.png)
 
 #### Linked paper
 + preprint:
@@ -69,7 +69,8 @@ Files are constructed as a [Webots project](https://www.cyberbotics.com/doc/guid
 The morphology and the positions of each organs and limbs are reconstructed by the measurements of real desert ant *Cataglyphis fortis* by Wehner. For more details see the paper:
 
 [Wehner, R. (1983). Taxonomie, Funktionsmorphologie und Zoogeographie der saharischen Wüstenameise Cataglyphis fortis (Forel 1902) stat. nov. Senckenbergiana biol, 64, 89-132.](https://www.antsofafrica.org/ant_species_2012/cataglyphis/cataglyphis_fortis/wehner-1983-3052.pdf)
-![](media/desert_ant_morph.png)
+
+<img width="70%" src="media/desert_ant_morph.png"></img>
 
 ### Demos
 #### Locomotion
@@ -164,6 +165,9 @@ visual_world_mat2obj('world.mat', 'world.obj')
 ```
 then import to Webots (add the file name in the `url` field of node `Shape->Geometry->Mesh`) and set the appearance as you like:
 ![](media/WorldCustomize.png)
+
+### Questions, Feature Requests and Bugs
+If you want to ask any questions, request new features and report bugs, please refer to the [`issues`](https://github.com/XuelongSun/I2Bot/issues) page.
 
 
 
