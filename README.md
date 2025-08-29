@@ -20,6 +20,10 @@
 
 [Sun, X., Mangan, M., Yue, S., & Peng, J. (2024). I2Bot: an open-source tool for multi-modal and embodied simulation of insect navigation. bioRxiv, 2024-07.](https://www.biorxiv.org/content/10.1101/2024.07.11.603012v1.full)
 
++ Published in Royal Society Interface:
+
+[Sun, X., Mangan, M., Peng, J., & Yue, S. (2025). I2Bot: an open-source tool for multi-modal and embodied simulation of insect navigation. Journal of the Royal Society Interface, 22(222), 20240586.](https://royalsocietypublishing.org/doi/full/10.1098/rsif.2024.0586)
+
 ### Files
 Files are constructed as a [Webots project](https://www.cyberbotics.com/doc/guide/tutorial-1-your-first-simulation-in-webots?version=master)
 ```shell
